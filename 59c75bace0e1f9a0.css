@@ -2737,4 +2737,164 @@ html {
     .lg\:leading-\[4\.2rem\] {
         line-height: 4.2rem
     }
+
+    /* Main container styling */
+.mycontainer {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+h1.heading {
+    font-size: 2em;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Search bar */
+.search-bar input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Wallet container styling */
+.wallets-container {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.wallet-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.wallet-item:hover {
+    background-color: #f0f8ff;
+}
+
+.wallet-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Modal styling */
+.modal {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.modal-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.modal-button:hover {
+    background-color: #2980b9;
+}
+
+/* Dynamic form section */
+#manual-section {
+    padding-top: 10px;
+    font-size: 1rem;
+}
+
+#manual-section h4 {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#manual-section textarea,
+#manual-section input[type="text"],
+#manual-section input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Send and Close buttons */
+.send-button {
+    background-color: #2ecc71;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.send-button:hover {
+    background-color: #27ae60;
+}
+
+.close-button {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.close-button:hover {
+    background-color: #c0392b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modal-box {
+        width: 90%;
+    }
+
+    .wallet-item {
+        font-size: 0.9rem;
+    }
+
+    .send-button,
+    .close-button {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}
+
 }
