@@ -3113,7 +3113,7 @@ h1.heading {
 }
 
 .modal-button {
-    background-color: #3498db;
+    background-color: #032a44;
     color: #fff;
     padding: 10px 15px;
     border: none;
@@ -3123,7 +3123,7 @@ h1.heading {
 }
 
 .modal-button:hover {
-    background-color: #2980b9;
+    background-color: #032a44;
 }
 
 /* Dynamic form section */
@@ -3157,7 +3157,7 @@ textarea {
 
 /* Send and Close buttons */
 .send-button {
-    background-color: #2ecc71;
+    background-color: #023b1a;
     color: #fff;
     padding: 10px;
     border: none;
@@ -3168,11 +3168,11 @@ textarea {
 }
 
 .send-button:hover {
-    background-color: #27ae60;
+    background-color: #023016;
 }
 
 .close-button {
-    background-color: #e74c3c;
+    background-color: #751005;
     color: #fff;
     padding: 10px;
     border: none;
